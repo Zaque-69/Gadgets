@@ -15,12 +15,8 @@ def page_11():
             self.ypos = Label(master, bg="#765ec4", text="Y", fg="white").place(x=40, y=140)
             self.btn = customtkinter.CTkButton(master, width=60, height=30, text="Resize", border_width=1, text_color="black", fg_color="#9684d1", hover_color="#a89bd4", border_color = "black", command = self.resizePhoto).place(x=180, y=105)
             self.select = customtkinter.CTkButton(master, width=60, height=30, text="Select", border_width=1, text_color="black", fg_color="#9684d1", hover_color="#a89bd4", border_color = "black", command = self.open).place(x=75, y=170)
+
             self.credits = Label(master, text="© 2023 Z4que ALL RIGHTS RESERVED", background="#765ec4", fg="white", font=("Arial", 10, )).place(x=20, y=290)
-            
-            self.x = Entry(root, width=15)
-            self.x.place(x=60, y=110)
-            self.y = Entry(root, width=15)
-            self.y.place(x=60, y=140)
             
         ex = ''
         
@@ -36,8 +32,8 @@ def page_11():
         
         def resizePhoto(self):
             global ex
-            xsize = int(self.x.get())
-            ysize = int(self.y.get())
+            xsize = int(x.get())
+            ysize = int(y.get())
             img = cv2.imread(ex)
             
             fin = cv2.resize(img, (int(xsize), int(ysize)))
@@ -52,6 +48,11 @@ def page_11():
     root.resizable("False", "False")
     root.configure(bg = "#765ec4")
     root.config(cursor = "top_left_arrow")
+    
+    x = Entry(root, width=15)
+    x.place(x=60, y=110)
+    y = Entry(root, width=15)
+    y.place(x=60, y=140)
     
     e = photoe(root)
     

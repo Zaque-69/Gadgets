@@ -8,9 +8,8 @@ from PIL import Image, ImageTk
 
 def page_7():
     lol = os.getcwd()
-    class qrc:
+    class qrCode:
         def __init__(self, master):
-            self.master = master
             self.space = Label(master, text="", bg="skyblue").pack()
             self.title = Label(master, bg="skyblue", text="QR Code Generator", font=(15)).pack()
             self.link = Label(master,text='Link',font = (15),bg='skyblue').place(x=70, y=80)
@@ -21,33 +20,29 @@ def page_7():
             self.credits = Label(master, text="© 2023 Z4que ALL RIGHTS RESERVED", background="skyblue", font=("Arial", 10, ))
             self.credits.place(x=20, y=470)
             
-            self.msg = Entry(root, width = 35)
-            self.msg.place(x=120, y=80)
-            self.save_name = Entry(root, width = 35)
-            self.save_name.place(x=120, y=110)
-            
-            self.label1 = Label(root, bg = "skyblue")
-            self.label1.place(x=105, y=230)
-            
-            self.label2 = Label(root, bg="lightgray", relief = "ridge", width = 27, height = 12)
-            self.label2.place(x=110, y=230)
-            
         def generate(self):
+            global f
             qrdir = "QR_CODE"
-            input = self.msg.get()
+            input = msg.get()
             img = qrcode.make(str(input))
             type(img) 
-            save = self.save_name.get()
+            save = save_name.get()
             img.thumbnail((200, 200))
             img.save(f'{save}.jpg')
             
             fin = save + ".jpg"
-            self.label2.destroy()
+            print(fin)
+            
+            try:
+                label2.destroy()
+            except: 
+                pass
             
             image2 = PhotoImage(file = fin , master = root)
-            self.label1.configure( image = image2 )
-            self.label1.image = image2
+            label1.configure( image = image2 )
+            label1.image = image2
             messagebox.showinfo("Info!", "Succes!")
+            
                 
     root = Tk()
     root.wm_attributes('-toolwindow', 'True')
@@ -55,7 +50,19 @@ def page_7():
     root.geometry('400x500')
     root.resizable(False, False)
     root.config(bg='skyblue')
+    
+    msg = Entry(root, width = 35)
+    msg.place(x=120, y=80)
+    save_name = Entry(root, width = 35)
+    save_name.place(x=120, y=110)
+    my_guy = qrCode(root)
+    
+    
+    label1 = Label(root, bg = "skyblue")
+    label1.place(x=105, y=230)
+    
+    label2 = Label(root, bg="lightgray", relief = "ridge", width = 27, height = 12)
+    label2.place(x=110, y=230)
         
-    ah = qrc(root)
     if __name__=="__main__":
         root.mainloop()

@@ -29,39 +29,24 @@ def page_4():
             self.txt1 = Label(master, text="Min. Number", bg="#f78707").place(x=437, y=55)
             self.txt2 = Label(master, text="Max. Number", bg="#f78707").place(x=437, y=105)
             self.txt3 = Label(master, text="How many" + "\n" +  "numbers", bg="#f78707").place(x=397, y=155)
-            
-            self.Outputpass = Text(root, height=6, width=30, bg="white")
-            self.Outputpass.place(x=50, y=240)
-            self.getpass = Entry(root, width=30)
-            self.getpass.place(x=80, y=80)
-            
-            self.entry1 = Entry(root, width=30)
-            self.entry2 = Entry(root, width=30)
-            self.entry3 = Entry(root, width=15)
-            self.entry1.place(x=380, y=80)
-            self.entry2.place(x=380, y=130)
-            self.entry3.place(x=380, y=200)
-            
-            self.Output = Text(root, height=6, width=30, bg="white")
-            self.Output.place(x=350, y=240)   
                 
         def deleteText(self):
-            self.Output.delete("1.0", END)
+            Output.delete("1.0", END)
                 
         def deleteText2(self):
-            self.Outputpass.delete("1.0", END)
+            Outputpass.delete("1.0", END)
             
         def passworld(self):
             import pyperclip
             from tkinter import messagebox
             
-            pas = self.getpass.get()
+            pas = getpass.get()
             string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*+=-"
             print(len(string))
             if( int(pas) < 74):
                 a = "".join(random.sample(string, k=(int(pas))))
                 afin = a + "\n"
-                self.Outputpass.insert(END, afin, "\n")
+                Outputpass.insert(END, afin, "\n")
                 print("da")
             else:
                 p = 0
@@ -73,19 +58,19 @@ def page_4():
                 rest = int(pas) - p
                 for i in range(int(x)):
                     b = "".join(random.sample(string, k = 73))
-                    self.Outputpass.insert(END, b, "\n")
+                    Outputpass.insert(END, b, "\n")
                 c = "".join(random.sample(string, k = rest))
-                self.Outputpass.insert(END, str(c) ,"\n")
+                Outputpass.insert(END, str(c) ,"\n")
                     
             
         def copy(self):
-            ex = self.Outputpass.get("1.0", "end-1c")
+            ex = Outputpass.get("1.0", "end-1c")
             pyperclip.copy(ex)
             
         def generate(self):
-            nrmin = self.entry1.get() 
-            nrmax = self.entry2.get() 
-            hmn = self.entry3.get() 
+            nrmin = entry1.get() 
+            nrmax = entry2.get() 
+            hmn = entry3.get() 
             try:
                 if(int(nrmin) > int(nrmax)):
                     messagebox.showerror("Info!", "Minim Number can't be bigger than Maxim Number!")
@@ -94,7 +79,7 @@ def page_4():
                         for i in range(int(hmn)):
                             number = random.randint(int(nrmin), int(nrmax))
                             x = str(number) + "\n"
-                            self.Output.insert(END, str(x), "\n")
+                            Output.insert(END, str(x), "\n")
                     except:
                         messagebox.showerror("Info!", "You must insert numbers. Please try again!")
             except:
@@ -107,6 +92,21 @@ def page_4():
     root.title(" Random  ")
     root.configure(bg = "#f78707")
     root.config(cursor="top_left_arrow")
+    
+    Outputpass = Text(root, height=6, width=30, bg="white")
+    Outputpass.place(x=50, y=240)
+    getpass = Entry(root, width=30)
+    getpass.place(x=80, y=80)
+    
+    entry1 = Entry(root, width=30)
+    entry2 = Entry(root, width=30)
+    entry3 = Entry(root, width=15)
+    entry1.place(x=380, y=80)
+    entry2.place(x=380, y=130)
+    entry3.place(x=380, y=200)
+    
+    Output = Text(root, height=6, width=30, bg="white")
+    Output.place(x=350, y=240)   
     
     ex = rand(root)
   

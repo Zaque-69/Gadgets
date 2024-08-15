@@ -36,15 +36,15 @@ class App:
         self.credits = Label(master, text="© 2023 Z4que ALL RIGHTS RESERVED", background="#383838", font=("Arial", 10, ), fg = "white").place(x=270, y=445)
         self.Button14 = customtkinter.CTkButton(master, fg_color=("gray"),border_width=1, text="System", command=self.systeminfo, border_color="black", height=10, hover_color="#979797", corner_radius=4, text_color="black", width=30).place(x=20, y=55)
 
+        self.img = ImageTk.PhotoImage(Image.open("assets/bg_image/logo.jpg"))
+        self.lab = Label(master, image = self.img, borderwidth = 0, height = 64, width = 64).place(x=15, y=85)
+
         self.label1 = Label(master, text=" ", bg="#383838").place(x=460, y=50) 
         self.custom_button = customtkinter.CTkButton(master, fg_color=("gray"),border_width=1, text="+", command=self.clicked, border_color="black", height=37, hover_color="#979797", corner_radius=8, text_color="black", width=30)
         self.custom_button.place(x=440, y=70)
         self.custom_button1 = customtkinter.CTkButton(master, fg_color=("gray"),border_width=1, text="-", command=self.minus, border_color="black", height=37, hover_color="#979797", corner_radius=8, text_color="black", width=30)
         self.custom_button1.place(x=480, y=70)  
 
-        self.labell =Label(root, bg="#383838", fg="white")
-        self.labell.place(x=470, y=30)
-        
     def main_pages(self):
         import webbrowser
         webbrowser.open_new("https://www.youtube.com/channel/UCj4LJSV016_F6OnBJJwRUTw")
@@ -65,14 +65,14 @@ class App:
     def clicked(self):
         global count
         count = count + 1
-        self.labell.configure(text=str(count))
-        return self.labell
+        labell.configure(text=str(count))
+        return labell
 
     def minus(self):
         global count
         count = count - 1
-        self.labell.configure(text=str(count))
-        return self.labell
+        labell.configure(text=str(count))
+        return labell
     
 root = Tk()
 count = 0
@@ -82,6 +82,9 @@ root.geometry("530x480")
 root.configure(bg = "#383838")
 root.title("Gagets")
 root.config(cursor="top_left_arrow")
+
+labell =Label(root, bg="#383838", fg="white")
+labell.place(x=470, y=30)
 
 #desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop') 
 #print(desktop)

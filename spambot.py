@@ -4,66 +4,46 @@ import time
 import keyboard
 from tkinter import messagebox
 import customtkinter
-import sys
 
 def page_3():
-    class spamb:
-        def __init__(self, master):
-            self.master = master
-            self.space = Label(master, text=" ", bg="#016b13").pack()
-            self.title = Label(master, text="Spam Bot", bg="#016b13", font=("Arial", 12), fg="white").pack()
-            self.ind = Label(master, bg="#016b13", text="Write the text here...", fg="white").pack()
-            self.inputtxt = Text(master, width=20, height=10)
-            self.inputtxt.pack()
-            self.space1 = Label(master, text=" ", bg="#016b13").pack()
-            self.txt = Label(master, text="Number of messages...", bg="#016b13", fg="white").pack()
-            self.mess = Text(master, width=16, height=1)
-            self.mess.pack()
+        
 
-            self.spacee = Label(master, text=" ", bg="#016b13").pack()
-            self.press = customtkinter.CTkButton(master, height = 40, width = 70, fg_color=("#abf7c9"),border_width=1, command = self.main, border_color="black", corner_radius=8,text_color="black",text = "Run", hover_color="#78f5aa").pack()
-            self.space10 = Label(master, text=" ", bg="#016b13").pack()
-            self.press3 = customtkinter.CTkButton(master, height = 40, width = 50, fg_color=("#abf7c9"),border_width=1, command = self.countless, border_color="black", corner_radius=8,text_color="black",text = "Countless", hover_color="#78f5aa").pack()
-            self.space13= Label(master, text=" ", bg="#016b13").pack()
-            self.opentext = customtkinter.CTkButton(master, height = 40, width = 20, fg_color=("#abf7c9"),border_width=1, command = self.textbox, border_color="black", corner_radius=8,text_color="black",text = "Textbox", hover_color="#78f5aa").pack() 
-
-            credits = Label(master, text="© 2023 Z4que ALL RIGHTS RESERVED", background="#016b13", font=("Arial", 10), fg="white").place(x=30, y=500)
-
-        def exit():
-            messagebox.showinfo("Info!", "Succes!")
-            sys.exit()
-            
-        def main(self):
-            INSERT = self.inputtxt.get("1.0", "end-1c")
-            MESS = self.mess.get("1.0", "end-1c")
+        def main():
+            INSERT = inputtxt.get("1.0", "end-1c")
+            MESS = mess.get("1.0", "end-1c")
             try:
                 for i in range(int(MESS)+1):
                     if keyboard.is_pressed("esc"):
-                        exit()
+                        messagebox.showerror("Gadgets - Info!", "Succes!")
+                        break
                     auto.write(INSERT)
                     auto.press("enter")
                     time.sleep(0.3)
                     if keyboard.is_pressed("esc"):
-                        exit()
+                        messagebox.showerror("Gadgets - Info!", "Succes!")
+                        break
             except:
                 messagebox.showerror("Info!", "You can't insert letters or negative numbers. Please try again!")
             
-        def countless(self):
-            INSERT = self.inputtxt.get("1.0", "end-1c")
+        def countless():
+            INSERT = inputtxt.get("1.0", "end-1c")
             print(INSERT)
             time.sleep(2)
             while True:
                 auto.write(INSERT)
                 if keyboard.is_pressed("esc"):
-                    exit()
+                    messagebox.showerror("Gadgets - Info!", "Succes!")
+                    break
                 auto.press("enter")
                 if keyboard.is_pressed("esc"):
-                    exit()
+                    messagebox.showerror("Gadgets - Info!", "Succes!")
+                    break
                 time.sleep(0.3)
                 if keyboard.is_pressed("esc"):
-                    exit()
+                    messagebox.showerror("Gadgets - Info!", "Succes!")
+                    break
 
-        def textbox(self):
+        def textbox():
         
             from tkinter import filedialog
             import customtkinter
@@ -98,15 +78,45 @@ def page_3():
             input.pack()
             window.mainloop()
             
-    root = Tk()
-    root.wm_attributes('-toolwindow', 'True')
-    root.geometry("300x540")
-    root.resizable(False, False)
-    root.title("Spam Bot")
-    root.configure(bg="#016b13")
-    root.config(cursor="top_left_arrow")
+        root = Tk()
+        root.wm_attributes('-toolwindow', 'True')
+        root.geometry("300x540")
+        root.resizable(False, False)
+        root.title("Spam Bot")
+        root.configure(bg="#016b13")
+        root.config(cursor="top_left_arrow")
+        print("                                     NOTICE! Tap -ESC- to stop the process!" )
+        space = Label(root, text=" ", bg="#016b13")
+        title = Label(root, text="Spam Bot", bg="#016b13", font=("Arial", 12), fg="white")
+        ind = Label(root, bg="#016b13", text="Write the text here...", fg="white")
+        inputtxt = Text(root, width=20, height=10)
+        mess = Text(root, width=16, height=1)
+        space1 = Label(root, text=" ", bg="#016b13")
+        #customtkinter.CTkButton(root, height = 30, width = 50, fg_color=("white"),border_width=1, command=clicks2, border_color="black", corner_radius=8,text_color="black",text = "Right", hover_color="silver")
+        press = customtkinter.CTkButton(root, height = 40, width = 70, fg_color=("#abf7c9"),border_width=1, command=main, border_color="black", corner_radius=8,text_color="black",text = " Run ", hover_color="#78f5aa")
+        press3 = customtkinter.CTkButton(root, height = 40, width = 50, fg_color=("#abf7c9"),border_width=1, command=countless, border_color="black", corner_radius=8,text_color="black",text = "Countless", hover_color="#78f5aa")
+        opentext = customtkinter.CTkButton(root, height = 20, width = 20, fg_color=("#abf7c9"),border_width=1, command=textbox, border_color="black", corner_radius=8,text_color="black",text = "Textbox", hover_color="#78f5aa")
+        credits = Label(root, text="© 2023 Z4que ALL RIGHTS RESERVED", background="#016b13", font=("Arial", 10), fg="white")
 
-    ah = spamb(root)
-    
-    if __name__=="__main__":      
-        mainloop()
+        space2 = Label(root, text=" ", bg="#016b13")
+        space3 = Label(root, text=" ", bg="#016b13")
+
+        credits.place(x=30, y=500)
+
+        space.pack()
+        title.pack()
+        ind.pack()
+        inputtxt.pack()
+        space1.pack()
+        txt = Label(root, text="Number of messages...", bg="#016b13", fg="white").pack()
+        mess.pack()
+        spacee = Label(root, text=" ", bg="#016b13").pack()
+        press.pack()
+        space10 = Label(root, text=" ", bg="#016b13").pack()
+        
+        press3.pack()
+        space13= Label(root, text=" ", bg="#016b13").pack()
+        opentext.pack()    
+        
+        if __name__=="__main__":      
+            mainloop()
