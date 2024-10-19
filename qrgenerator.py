@@ -1,9 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-import cv2
-import customtkinter
-import qrcode
-import os
+import cv2, customtkinter, qrcode, os
 from PIL import Image, ImageTk
 
 def page_7():
@@ -30,9 +27,8 @@ def page_7():
             img.thumbnail((200, 200))
             img.save(f'{save}.jpg')
             
-            fin = save + ".jpg"
-            print(fin)
-            
+            fin = save + ".jpg" 
+                       
             try:
                 label2.destroy()
             except: 

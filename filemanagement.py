@@ -1,104 +1,56 @@
 from tkinter import *
 import customtkinter
 import pathlib as path
-import shutil
+import shutil, os
 from tkinter import messagebox
 
 def page_5():
         
     def org():
         INPUT = inputtxt.get()
-        if "//" in INPUT:
-            pass
-        else:
-            INPUT = INPUT.replace("/", "//")
-        os.chdir(str(INPUT))
-        pypath = "Py-Pyw Files"
-        htmlpath = "Html-Css-Js Files"
-        photopath = "Photos"
-        cpath = "C Files"
-        vapath = "Mp3-Mp4 Files"
-        zrpath = "Archive Files"
-        docpath = "Document Files"
-        pppath = "PowerPoint Files"
-             
-        for file in os.listdir():
-            print(file)
-            
-            #for file in os.listdir():
-            #print(file)
-            #fisier = open("test.txt", "r")
-            #liniifisier = fisier.read().splitlines()
-            #for file in liniifisier:
-                #if file.endswith(str(liniifisier)):
-                    #os.mkdir(pypath)
-                    #shutil.move(file, pypath)
-            
-            if file[-3:]==".py" or file[-4:] == "pyw":
-                if not os.path.exists(pypath):
-                    os.mkdir(pypath)
-                    shutil.move(file, pypath)
-                else:  
-                    shutil.move(file, pypath)
-                
-            elif file[-5:] == ".html" or file[-4:] == ".css" or file[-3:] == ".js":
-                if not os.path.exists(htmlpath):
-                    os.mkdir(htmlpath)
-                    shutil.move(file, htmlpath)
-                else:  
-                    shutil.move(file, htmlpath)
-                    
-            elif file[-5:] == ".jpeg" or file[-4:] == ".png" or file[-4:] == ".jpg" or file[-4:] == ".gif" or file[-4:]==".pdf":
-                if not os.path.exists(photopath):
-                    os.mkdir(photopath)
-                    shutil.move(file, photopath)
-                else:  
-                    shutil.move(file, photopath)
+        if INPUT[len(INPUT)-1] != '/' : 
+            INPUT += '/'
 
-            elif file[-4:] == ".cpp" or file[-3:] == ".cs" or file[-2:] == ".c":
-                if not os.path.exists(cpath):
-                    os.mkdir(cpath)
-                    shutil.move(file, cpath)
-                else:  
-                    shutil.move(file, cpath)
-                    
-            elif file[-4:] == ".mp3" or file[-4:] == ".mp4":
-                if not os.path.exists(vapath):
-                    os.mkdir(vapath)
-                    shutil.move(file, vapath)
-                else:  
-                    shutil.move(file, vapath)    
-                    
-            elif file[-4:] == ".zip" or file[-4:] == ".rar":
-                if not os.path.exists(zrpath):
-                    os.mkdir(zrpath)
-                    shutil.move(file, zrpath)
-                else:  
-                    shutil.move(file, zrpath)  
-                    
-            elif file[-4:] == ".doc" or file[-5:] == ".docx":
-                if not os.path.exists(docpath):
-                    os.mkdir(docpath)
-                    shutil.move(file, docpath)
-                else:  
-                    shutil.move(file, docpath) 
-                    
-            elif file[-5:] == ".pptx" or file[-4:] == ".ppt":
-                if not os.path.exists(pppath):
-                    os.mkdir(pppath)
-                    shutil.move(file, pppath)
-                else:  
-                    shutil.move(file, pppath)      
-                    
-            else:
+        extensions = []
+        files = []
+        folders_created = []
+
+        dot = 0
+        ext = ""
+        for file in os.listdir(str(INPUT)):
+            files.append(file)
+            file += " "
+            for c in range(0, len(file) - 1) : 
+                if file[c] == '.' : 
+                    dot = 1
+
+                if dot == 1 and file[c + 1] != " ": 
+                    ext += file[c + 1]
+            extensions.append(ext)
+            dot, ext = 0, ""
+        
+        for ext in extensions : 
+            try : 
+                os.mkdir(str(INPUT) + ext + "_files")
+                folders_created.append(str(INPUT) + ext + "_files")
+            except : 
                 pass
+
+        for ext in extensions : 
+            for folder in folders_created :
+                for file in files :  
+                    if ext in file and ext in folder :  
+                        try : 
+                            shutil.move(str(INPUT) + file, folder)
+                        except : pass
+
         messagebox.showinfo("Info!", "Succes!")
         
     root = Tk()
     root.geometry("500x200")
     root.configure(bg = "#8b4dff")
     root.config(cursor = "top_left_arrow")
-    root.wm_attributes('-toolwindow', 'True')
+    #root.wm_attributes('-toolwindow', 'True')
     root.title("Organize your files")
     
     space = Label(root, text="", bg="#8b4dff").pack()

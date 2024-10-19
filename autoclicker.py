@@ -35,7 +35,7 @@ def page_2():
             messagebox.showinfo("Gadgets - Info!", "Succes")
         except:
             messagebox.showerror("Info!", "You can't insert letters or negative numbers. Please try again!")
-    
+     
     root = Tk()
 
     root.geometry("320x520")

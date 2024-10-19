@@ -29,7 +29,6 @@ def page_11():
         def remove_bg(self):
             global ex
             
-        
         def resizePhoto(self):
             global ex
             xsize = int(x.get())
